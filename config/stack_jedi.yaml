@@ -48,7 +48,6 @@ netcdf:
   build: YES
   shared: NO
   enable_pnetcdf: NO
-  disable_cxx: YES
   version_c: 4.7.4
   version_f: 4.5.3
   version_cxx: 4.3.1
@@ -75,7 +74,7 @@ esmf:
   debug: NO
 
 fms:
-  build: YES
+  build: NO
   version: master
   repo: noaa-gfdl
   cmake_opts: "-DGFS_PHYS=ON -DLARGEFILE=ON"
@@ -215,11 +214,11 @@ eigen:
   version: 3.3.7
 
 gsl_lite:
-  build: YES
+  build: NO
   version: 0.37.0
 
 gptl:
-  build: YES
+  build: NO
   version: 8.0.2
 
 fftw:
