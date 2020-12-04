@@ -74,7 +74,7 @@ esmf:
   debug: NO
 
 fms:
-  build: NO
+  build: YES
   version: master
   repo: noaa-gfdl
   cmake_opts: "-DGFS_PHYS=ON -DLARGEFILE=ON"
@@ -214,7 +214,7 @@ eigen:
   version: 3.3.7
 
 gsl_lite:
-  build: NO
+  build: YES
   version: 0.37.0
 
 gptl:
