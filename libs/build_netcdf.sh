@@ -59,11 +59,10 @@ gitURLroot="https://github.com/Unidata"
 cd ${HPC_STACK_ROOT}/${PKGDIR:-"pkg"}
 curr_dir=$(pwd)
 
-LDFLAGS1="-L$HDF5_ROOT/lib"
+LDFLAGS1="-L$HDF5_ROOT/lib -lhdf5_hl -lhdf5"
 LDFLAGS2=$(cat $HDF5_ROOT/lib/libhdf5.settings | grep AM_LDFLAGS | cut -d: -f2)
 [[ $enable_pnetcdf =~ [yYtT] ]] && LDFLAGS4="-L$PNETCDF_ROOT/lib"
 if [[ ${STACK_netcdf_shared:-} != [yYtT] ]]; then
-  LDFLAGS1+=" -lhdf5_hl -lhdf5"
   LDFLAGS3=$(cat $HDF5_ROOT/lib/libhdf5.settings | grep "Extra libraries" | cut -d: -f2)
   [[ $enable_pnetcdf =~ [yYtT] ]] && LDFLAGS4+=" -lpnetcdf"
 fi
@@ -153,7 +152,7 @@ if [[ ${STACK_netcdf_shared} =~ [yYtT] ]]; then
   export LDFLAGS+=" -L$prefix/lib"
 else
   export LIBS=$($prefix/bin/nc-config --libs --static)
-  export LDFLAGS+=" -L$prefix/lib -lnetcdf"
+  export LDFLAGS+=" -L$prefix/lib -lnetcdf -lhdf5"
 fi
 export CFLAGS+=" -I$prefix/include"
 export CXXFLAGS+=" -I$prefix/include"
