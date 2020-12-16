@@ -110,7 +110,7 @@ software=$name-"c"-$version
 [[ -d build ]] && rm -rf build
 mkdir -p build && cd build
 
-[[ ${STACK_netcdf_shared} =~ [yYtT] ]] shared_flags="--enable-shared --enable-static" || shared_flags="--disable-shared"
+[[ ${STACK_netcdf_shared} =~ [yYtT] ]] && shared_flags="--enable-shared --enable-static" || shared_flags="--disable-shared"
 [[ $enable_pnetcdf =~ [yYtT] ]] && pnetcdf_conf="--enable-pnetcdf"
 [[ -z $mpi ]] || extra_conf="--enable-parallel-tests"
 
