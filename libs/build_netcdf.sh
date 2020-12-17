@@ -63,7 +63,7 @@ LDFLAGS1="-L$HDF5_ROOT/lib"
 LDFLAGS2=$(cat $HDF5_ROOT/lib/libhdf5.settings | grep AM_LDFLAGS | cut -d: -f2)
 [[ $enable_pnetcdf =~ [yYtT] ]] && LDFLAGS4="-L$PNETCDF_ROOT/lib"
 if [[ ${STACK_netcdf_shared:-} != [yYtT] ]]; then
-  LDFLAGS1+="-lhdf5 -lhdf5_hl -lz"
+  LDFLAGS1+=" -lhdf5 -lhdf5_hl -lz"
   LDFLAGS3=$(cat $HDF5_ROOT/lib/libhdf5.settings | grep "Extra libraries" | cut -d: -f2)
   [[ $enable_pnetcdf =~ [yYtT] ]] && LDFLAGS4+=" -lpnetcdf"
 fi
