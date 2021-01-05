@@ -50,9 +50,9 @@ url="http://fftw.org/${software}.tar.gz"
 [[ -d build ]] && rm -rf build
 mkdir -p build && cd build
 
-[[ -z $mpi ]] || export MPICC=$MPI_CC; extra_conf="--enable-mpi"
+[[ -z $mpi ]] || ( export MPICC=$MPI_CC; extra_conf="--enable-mpi" )
 
-../configure --prefix=$prefix --enable-openmp --enable-threads ${extra_conf:-}
+../configure --prefix=$prefix --enable-openmp --enable-threads $extra_conf
 
 make -j${NTHREADS:-4}
 [[ $MAKE_CHECK =~ [yYtT] ]] && make check
