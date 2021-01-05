@@ -223,7 +223,7 @@ gptl:
   version: 8.0.2
 
 fftw:
-  build: YES
+  build: NO
   version: 3.3.8
 
 tau2:
